@@ -69,11 +69,17 @@
     "name": "Pokemon TCG Portfolio 4-P Gardevoir & Venusaur",
     "price": "56,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3276606"
+    "product_id": "3447424"
   },
   {
     "name": "Pokemon TCG Portfolio 4-P Mega Gengar & Mega Heracross",
     "price": "55,00 kr.",
+    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
+    "product_id": "3276606"
+  },
+  {
+    "name": "Pokemon TCG Mega Evolutions - Chaos Rising booster pack - assorted",
+    "price": "49,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3276606"
   },
@@ -85,12 +91,6 @@
   },
   {
     "name": "Pokemon TCG Mega Zygarde ex Premium Collection",
-    "price": null,
-    "status": null,
-    "product_id": null
-  },
-  {
-    "name": "Pokemon TCG Mega Evolutions - Chaos Rising booster pack - assorted",
     "price": null,
     "status": null,
     "product_id": null
