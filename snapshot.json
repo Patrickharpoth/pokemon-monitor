@@ -25,7 +25,7 @@
   },
   {
     "name": "Pokemon TCG Portfolio 9-P Mega Charizard X & Mega Lopunny",
-    "price": "111,00 kr.",
+    "price": "113,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3382588"
   },
@@ -70,5 +70,11 @@
     "price": "39,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3276606"
+  },
+  {
+    "name": "Pokemon TCG Mega Evolutions - Chaos Rising booster pack - assorted",
+    "price": null,
+    "status": null,
+    "product_id": null
   }
 ]
