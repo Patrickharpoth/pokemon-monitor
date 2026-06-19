@@ -1,19 +1,13 @@
 [
   {
     "name": "pokemon kort",
-    "price": "1.099,00 kr.",
-    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3478489"
-  },
-  {
-    "name": "Pokemon Mini Tin - display with 10 tins",
-    "price": "1.099,00 kr.",
+    "price": "379,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3447590"
   },
   {
-    "name": "Pokemon Mega Lucario ex League Battle Deck",
-    "price": "399,00 kr.",
+    "name": "Pokemon TCG Mega Lucario ex League Battle Deck",
+    "price": "379,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3421827"
   },
@@ -27,19 +21,19 @@
     "name": "Pokemon TCG Deluxe Battle Deck Ninetales ex/Zapdos ex - assorted",
     "price": "299,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3478490"
-  },
-  {
-    "name": "Pokemon Tin Summer EX - assorted",
-    "price": "279,00 kr.",
-    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3421830"
+    "product_id": "3421832"
   },
   {
     "name": "Pokemon TCG ex Battle Deck Greninja ex/Kangaskhan ex - assorted",
     "price": "229,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3421830"
+    "product_id": "3479238"
+  },
+  {
+    "name": "Pokemon TCG Poké Ball Tin - assorted",
+    "price": "179,00 kr.",
+    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
+    "product_id": "3305145"
   },
   {
     "name": "Pokemon TCG ex Battle Deck - Tapu Koko / Iron Leaves - Scarlet & Violet",
@@ -54,44 +48,38 @@
     "product_id": "3382586"
   },
   {
-    "name": "Pokemon Portfolio 9-P Poke ME04",
+    "name": "Pokemon TCG Portfolio 9-P Mega Greninja & Mega Pyroar",
     "price": "106,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3382585"
+    "product_id": "3382586"
   },
   {
     "name": "Pokemon TCG Portfolio 9-P Mega Lucario & Mega Kangaskhan",
     "price": "102,00 kr.",
-    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3382588"
+    "status": "Bestilt: forventet på lager 26-06-2026",
+    "product_id": "3479652"
   },
   {
     "name": "Pokemon TCG Portfolio 9-P Team Rocket",
     "price": "92,00 kr.",
+    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
+    "product_id": "3382585"
+  },
+  {
+    "name": "Pokemon TCG Portfolio 4-P Mega Floette & Mega Dragalge",
+    "price": "89,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3382588"
   },
   {
     "name": "Pokemon TCG Portfolio 4-P Ethan's Ho-Oh & Cynthia's Garchomp",
     "price": "88,00 kr.",
-    "status": "Bestilt: forventet på lager 26-06-2026",
-    "product_id": "3479652"
+    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
+    "product_id": "3447424"
   },
   {
     "name": "Pokemon TCG Portfolio 4-P Pikachu",
     "price": "76,00 kr.",
-    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3402607"
-  },
-  {
-    "name": "Pokemon Portfolio 4-P Poke ME04",
-    "price": "66,00 kr.",
-    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3071259"
-  },
-  {
-    "name": "Pokemon TCG Portfolio 4-P Gardevoir & Venusaur",
-    "price": "60,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3276606"
   },
@@ -106,11 +94,5 @@
     "price": "39,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3276606"
-  },
-  {
-    "name": "Pokemon TCG Mega Evolutions - Chaos Rising booster pack - assorted",
-    "price": null,
-    "status": null,
-    "product_id": null
   }
 ]
