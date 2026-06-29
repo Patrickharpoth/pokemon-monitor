@@ -68,13 +68,13 @@
   {
     "name": "Pokemon TCG Portfolio 4-P Ethan's Ho-Oh & Cynthia's Garchomp",
     "price": "87,00 kr.",
-    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3447424"
+    "status": null,
+    "product_id": "3071259"
   },
   {
-    "name": "Pokemon TCG Portfolio 4-Pocket - Raging Bolt and Iron Crown",
+    "name": "Pokemon TCG Portfolio 4-P Raging Bolt & Iron Crown",
     "price": "79,00 kr.",
-    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
+    "status": "Fjernlager, 5-6 dages levering (Forventes på eget lager 03-07-2026)",
     "product_id": "3447424"
   },
   {
@@ -87,7 +87,7 @@
     "name": "Pokemon TCG Portfolio 4-P Mega Gengar & Mega Heracross",
     "price": "55,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3276606"
+    "product_id": "3484908"
   },
   {
     "name": "Pokemon TCG Portfolio 4-P Pikachu",
@@ -100,5 +100,11 @@
     "price": "25,00 kr.",
     "status": null,
     "product_id": "3484908"
+  },
+  {
+    "name": "Pokemon TCG Mega Charizard X ex Ultra-Premium Collection",
+    "price": null,
+    "status": null,
+    "product_id": null
   }
 ]
