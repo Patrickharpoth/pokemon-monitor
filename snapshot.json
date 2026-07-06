@@ -56,14 +56,14 @@
   {
     "name": "Pokemon TCG Portfolio 9-P Team Rocket",
     "price": "92,00 kr.",
-    "status": "Fjernlager, 5-6 dages levering (Forventes på eget lager 10-07-2026)",
-    "product_id": "3382585"
+    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
+    "product_id": "3382588"
   },
   {
     "name": "Pokemon TCG Portfolio 4-P Mega Floette & Mega Dragalge",
     "price": "89,00 kr.",
-    "status": "Fjernlager, 5-6 dages levering (Forventes på eget lager 10-07-2026)",
-    "product_id": "3355744"
+    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
+    "product_id": "3382588"
   },
   {
     "name": "Pokemon TCG Portfolio 4-P Ethan's Ho-Oh & Cynthia's Garchomp",
@@ -72,22 +72,22 @@
     "product_id": "3276606"
   },
   {
-    "name": "Pokemon TCG Portfolio 4-P Raging Bolt & Iron Crown",
-    "price": "79,00 kr.",
-    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3071259"
-  },
-  {
     "name": "Pokemon TCG Portfolio 4-P Pikachu",
     "price": "76,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3447424"
   },
   {
+    "name": "Pokemon TCG Portfolio 4-P Raging Bolt & Iron Crown",
+    "price": "68,00 kr.",
+    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
+    "product_id": "3071259"
+  },
+  {
     "name": "Pokemon TCG Portfolio 4-P Pikachu",
     "price": "56,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3447424"
+    "product_id": "3071259"
   },
   {
     "name": "Pokemon TCG Portfolio 4-P Mega Gengar & Mega Heracross",
