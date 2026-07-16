@@ -1,7 +1,13 @@
 [
   {
     "name": "pokemon kort",
-    "price": "369,00 kr.",
+    "price": "499,00 kr.",
+    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
+    "product_id": "3478496"
+  },
+  {
+    "name": "Pokemon TCG Mega Greninja ex Premium Collection",
+    "price": "499,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3447590"
   },
