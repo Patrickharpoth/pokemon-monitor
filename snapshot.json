@@ -1,13 +1,7 @@
 [
   {
     "name": "pokemon kort",
-    "price": "499,00 kr.",
-    "status": "På lager - 1-2 dages levering",
-    "product_id": "3478496"
-  },
-  {
-    "name": "Pokemon TCG Mega Greninja ex Premium Collection",
-    "price": "499,00 kr.",
+    "price": "369,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3447590"
   },
@@ -37,6 +31,12 @@
   },
   {
     "name": "Pokemon TCG Poké Ball Tin - assorted",
+    "price": "179,00 kr.",
+    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
+    "product_id": "3447426"
+  },
+  {
+    "name": "Pokemon Mega Evolution Pitch Black Blister 3-pack",
     "price": "179,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3479649"
@@ -86,23 +86,41 @@
   {
     "name": "Pokemon TCG Portfolio 4-P Pikachu",
     "price": "61,00 kr.",
-    "status": "Bestilt: forventet på lager 28-07-2026",
+    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3071259"
   },
   {
     "name": "Pokemon TCG Portfolio 4-P Mega Gengar & Mega Heracross",
     "price": "59,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3484908"
-  },
-  {
-    "name": "Pokemon Magnetic Holder 1T 180 PT",
-    "price": "25,00 kr.",
-    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3484908"
+    "product_id": "3071259"
   },
   {
     "name": "Pokemon TCG Mega Charizard X ex Ultra-Premium Collection",
+    "price": null,
+    "status": null,
+    "product_id": null
+  },
+  {
+    "name": "Pokemon Mega Evolution – Pitch Black Booster (box with 36 booster packs)",
+    "price": null,
+    "status": null,
+    "product_id": null
+  },
+  {
+    "name": "Pokemon Mega Evolution Pitch Black Elite Trainer Box",
+    "price": null,
+    "status": null,
+    "product_id": null
+  },
+  {
+    "name": "Pokemon TCG Mega Greninja ex Premium Collection",
+    "price": null,
+    "status": null,
+    "product_id": null
+  },
+  {
+    "name": "Pokemon Mega Evolution – Pitch Black Booster Bundle",
     "price": null,
     "status": null,
     "product_id": null
