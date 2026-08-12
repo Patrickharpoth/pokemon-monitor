@@ -20,41 +20,35 @@
   {
     "name": "Pokemon TCG Deluxe Battle Deck Ninetales ex/Zapdos ex - assorted",
     "price": "299,00 kr.",
-    "status": "Fjernlager, 2-3 dages levering (Forventes på eget lager 11-08-2026)",
+    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "2829075"
   },
   {
     "name": "Pokemon TCG Portfolio 9-P Mega Zygarde & Mega Clefable",
     "price": "169,00 kr.",
-    "status": "Bestilt - ukendt leveringsdato",
-    "product_id": "3402608"
+    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
+    "product_id": "3479652"
   },
   {
     "name": "Pokemon TCG Portfolio 9-P Mega Charizard X & Mega Lopunny",
     "price": "113,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3479652"
-  },
-  {
-    "name": "Pokemon TCG Portfolio 9-P Mega Lucario & Mega Kangaskhan",
-    "price": "102,00 kr.",
-    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3484912"
+    "product_id": "3484911"
   },
   {
     "name": "Pokemon TCG Portfolio 4-P Mega Floette & Mega Dragalge",
     "price": "89,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3484912"
-  },
-  {
-    "name": "Pokemon TCG Portfolio 9-P Tinkaton",
-    "price": "88,00 kr.",
-    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3484911"
   },
   {
     "name": "Pokemon TCG Portfolio 9-P Iono & Bellibolt",
+    "price": "88,00 kr.",
+    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
+    "product_id": "3484912"
+  },
+  {
+    "name": "Pokemon TCG Portfolio 9-P Tinkaton",
     "price": "88,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3276606"
@@ -69,19 +63,13 @@
     "name": "Pokemon TCG Portfolio 4-P Pikachu",
     "price": "82,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3484905"
+    "product_id": "3382585"
   },
   {
     "name": "Pokemon TCG Portfolio 4-P Pikachu",
     "price": "81,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3382585"
-  },
-  {
-    "name": "Pokemon TCG Portfolio 4-P Meowth & Mega Starmie",
-    "price": "69,00 kr.",
-    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3447424"
+    "product_id": "3484905"
   },
   {
     "name": "Pokemon TCG Portfolio 4-P Ethan's Ho-Oh & Cynthia's Garchomp",
@@ -90,19 +78,25 @@
     "product_id": "3447424"
   },
   {
-    "name": "Pokemon TCG Portfolio 4-P Mega Gengar & Mega Heracross",
-    "price": "56,00 kr.",
-    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3447424"
+    "name": "Pokemon TCG Portfolio 4-P Meowth & Mega Starmie",
+    "price": "59,00 kr.",
+    "status": "Bestilt: forventet på lager 27-08-2026",
+    "product_id": "3071259"
   },
   {
-    "name": "Pokemon TCG Mega Evolution Pitch Black Elite Trainer Box",
+    "name": "Pokemon TCG Portfolio 4-P Mega Gengar & Mega Heracross",
+    "price": "56,00 kr.",
+    "status": "Bestilt: forventet på lager 27-08-2026",
+    "product_id": "3071259"
+  },
+  {
+    "name": "Pokemon TCG Mega Charizard X ex Ultra-Premium Collection",
     "price": null,
     "status": null,
     "product_id": null
   },
   {
-    "name": "Pokemon TCG Mega Charizard X ex Ultra-Premium Collection",
+    "name": "Pokemon TCG Mega Evolution Pitch Black Elite Trainer Box",
     "price": null,
     "status": null,
     "product_id": null
