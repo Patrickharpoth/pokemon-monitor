@@ -57,17 +57,11 @@
     "name": "Pokemon TCG Portfolio 4-P Pikachu",
     "price": "82,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3382588"
+    "product_id": "3447424"
   },
   {
     "name": "Pokemon TCG Portfolio 4-P Meowth & Mega Starmie",
     "price": "69,00 kr.",
-    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3382585"
-  },
-  {
-    "name": "Pokemon TCG Portfolio 4-P Pikachu",
-    "price": "66,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3447424"
   },
@@ -75,10 +69,16 @@
     "name": "Pokemon TCG Portfolio 4-P Ethan's Ho-Oh & Cynthia's Garchomp",
     "price": "66,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3071259"
+    "product_id": "3382588"
   },
   {
     "name": "Pokemon TCG Portfolio 4-P Mega Gengar & Mega Heracross",
+    "price": "56,00 kr.",
+    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
+    "product_id": "3071259"
+  },
+  {
+    "name": "Pokemon TCG Portfolio 4-P Pikachu",
     "price": "56,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3071259"
