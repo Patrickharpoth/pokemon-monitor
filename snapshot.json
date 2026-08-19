@@ -26,6 +26,12 @@
   {
     "name": "Pokemon TCG Portfolio 9-P Mega Zygarde & Mega Clefable",
     "price": "169,00 kr.",
+    "status": "Fjernlager, 4-5 dages levering (Forventes på eget lager 24-08-2026)",
+    "product_id": "3479649"
+  },
+  {
+    "name": "Pokemon TCG Portfolio 9-P Mega Greninja & Mega Pyroar",
+    "price": "151,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3447426"
   },
@@ -33,17 +39,11 @@
     "name": "Pokemon 2-pack Blister",
     "price": "129,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3479652"
+    "product_id": "3484911"
   },
   {
     "name": "Pokemon TCG Portfolio 9-P Mega Charizard X & Mega Lopunny",
     "price": "113,00 kr.",
-    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3484911"
-  },
-  {
-    "name": "Pokemon TCG Portfolio 4-P Mega Floette & Mega Dragalge",
-    "price": "89,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3276606"
   },
@@ -51,23 +51,29 @@
     "name": "Pokemon TCG Portfolio 9-P Iono & Bellibolt",
     "price": "88,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3484905"
+    "product_id": "3479652"
   },
   {
     "name": "Pokemon TCG Portfolio 4-P Pikachu",
     "price": "82,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3447424"
+    "product_id": "3382585"
   },
   {
-    "name": "Pokemon TCG Portfolio 4-P Meowth & Mega Starmie",
+    "name": "Pokemon TCG Portfolio 4-P Mega Floette & Mega Dragalge",
     "price": "69,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3447424"
+    "product_id": "3484905"
   },
   {
     "name": "Pokemon TCG Portfolio 4-P Ethan's Ho-Oh & Cynthia's Garchomp",
     "price": "66,00 kr.",
+    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
+    "product_id": "3447424"
+  },
+  {
+    "name": "Pokemon TCG Portfolio 4-P Meowth & Mega Starmie",
+    "price": "59,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3382588"
   },
