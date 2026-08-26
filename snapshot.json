@@ -1,7 +1,13 @@
 [
   {
     "name": "pokemon kort",
-    "price": "369,00 kr.",
+    "price": "529,00 kr.",
+    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
+    "product_id": "3447589"
+  },
+  {
+    "name": "Pokemon TCG Mega Zygarde ex Premium Collection",
+    "price": "529,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3447590"
   },
@@ -20,14 +26,14 @@
   {
     "name": "Pokemon TCG Deluxe Battle Deck Ninetales ex/Zapdos ex - assorted",
     "price": "299,00 kr.",
-    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3484907"
+    "status": "Bestilt: forventet på lager 15-09-2026",
+    "product_id": "2829075"
   },
   {
     "name": "Pokemon TCG Portfolio 9-P Mega Zygarde & Mega Clefable",
     "price": "169,00 kr.",
-    "status": "Bestilt: forventet på lager 15-09-2026",
-    "product_id": "2829075"
+    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
+    "product_id": "3479649"
   },
   {
     "name": "Pokemon TCG Portfolio 9-P Mega Greninja & Mega Pyroar",
@@ -36,58 +42,64 @@
     "product_id": "3447426"
   },
   {
-    "name": "Pokemon 2-pack Blister",
+    "name": "Pokemon TCG 2-pack Booster",
     "price": "129,00 kr.",
-    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3484911"
+    "status": "Fjernlager, 4-5 dages levering",
+    "product_id": "3484910"
   },
   {
     "name": "Pokemon TCG Portfolio 9-P Mega Charizard X & Mega Lopunny",
     "price": "113,00 kr.",
+    "status": "Fjernlager, 2-3 dages levering (Forventes på eget lager 27-08-2026)",
+    "product_id": "3382585"
+  },
+  {
+    "name": "Pokemon TCG Portfolio 4-P Mega Charizard X/Y",
+    "price": "102,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3276606"
+    "product_id": "3484911"
+  },
+  {
+    "name": "Pokemon TCG Portfolio 4-P Ethan's Ho-Oh & Cynthia's Garchomp",
+    "price": "88,00 kr.",
+    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
+    "product_id": "3484905"
   },
   {
     "name": "Pokemon TCG Portfolio 9-P Iono & Bellibolt",
     "price": "88,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3479652"
-  },
-  {
-    "name": "Pokemon TCG Portfolio 4-P Pikachu",
-    "price": "82,00 kr.",
-    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3484905"
-  },
-  {
-    "name": "Pokemon TCG Portfolio 4-P Mega Floette & Mega Dragalge",
-    "price": "69,00 kr.",
-    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3382585"
   },
   {
     "name": "Pokemon TCG Portfolio 4-P Meowth & Mega Starmie",
     "price": "69,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
+    "product_id": "3479652"
+  },
+  {
+    "name": "Pokemon TCG Portfolio 4-P Mega Floette & Mega Dragalge",
+    "price": "57,00 kr.",
+    "status": "Bestilt: forventet på lager 08-09-2026",
     "product_id": "3447424"
-  },
-  {
-    "name": "Pokemon TCG Portfolio 4-P Ethan's Ho-Oh & Cynthia's Garchomp",
-    "price": "66,00 kr.",
-    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3382588"
-  },
-  {
-    "name": "Pokemon TCG Portfolio 4-P Mega Gengar & Mega Heracross",
-    "price": "59,00 kr.",
-    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3071259"
   },
   {
     "name": "Pokemon TCG Portfolio 4-P Pikachu",
     "price": "57,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3071259"
+  },
+  {
+    "name": "Pokemon TCG Portfolio 4-P Mega Gengar & Mega Heracross",
+    "price": "55,00 kr.",
+    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
+    "product_id": "3276606"
+  },
+  {
+    "name": "Pokemon TCG Portfolio 4-P Pikachu",
+    "price": "45,00 kr.",
+    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
+    "product_id": "3276606"
   },
   {
     "name": "Pokemon TCG Mega Charizard X ex Ultra-Premium Collection",
