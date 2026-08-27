@@ -26,8 +26,8 @@
   {
     "name": "Pokemon TCG Deluxe Battle Deck Ninetales ex/Zapdos ex - assorted",
     "price": "299,00 kr.",
-    "status": "Bestilt: forventet på lager 15-09-2026",
-    "product_id": "2829075"
+    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
+    "product_id": "3484907"
   },
   {
     "name": "Pokemon TCG Portfolio 9-P Mega Zygarde & Mega Clefable",
@@ -50,7 +50,7 @@
   {
     "name": "Pokemon TCG Portfolio 9-P Mega Charizard X & Mega Lopunny",
     "price": "113,00 kr.",
-    "status": "Fjernlager, 2-3 dages levering (Forventes på eget lager 27-08-2026)",
+    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3382585"
   },
   {
@@ -74,17 +74,17 @@
   {
     "name": "Pokemon TCG Portfolio 4-P Meowth & Mega Starmie",
     "price": "69,00 kr.",
-    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
-    "product_id": "3479652"
-  },
-  {
-    "name": "Pokemon TCG Portfolio 4-P Mega Floette & Mega Dragalge",
-    "price": "57,00 kr.",
     "status": "Bestilt: forventet på lager 08-09-2026",
-    "product_id": "3447424"
+    "product_id": "3382588"
   },
   {
     "name": "Pokemon TCG Portfolio 4-P Pikachu",
+    "price": "57,00 kr.",
+    "status": "På lager – Levering i morgen (bestil inden kl. 22)",
+    "product_id": "3447424"
+  },
+  {
+    "name": "Pokemon TCG Portfolio 4-P Mega Floette & Mega Dragalge",
     "price": "57,00 kr.",
     "status": "På lager – Levering i morgen (bestil inden kl. 22)",
     "product_id": "3071259"
@@ -108,13 +108,13 @@
     "product_id": null
   },
   {
-    "name": "Pokemon TCG Mega Greninja ex Premium Collection",
+    "name": "Pokemon TCG Mega Evolution—Chaos Rising Booster (box with 36 boosters)",
     "price": null,
     "status": null,
     "product_id": null
   },
   {
-    "name": "Pokemon TCG Mega Evolution—Chaos Rising Booster (box with 36 boosters)",
+    "name": "Pokemon TCG Mega Greninja ex Premium Collection",
     "price": null,
     "status": null,
     "product_id": null
