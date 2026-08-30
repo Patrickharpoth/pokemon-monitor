@@ -1,12 +1,13 @@
 import re
 import requests
+import time
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
 # Intrafin URL configured to show the expanded Pokémon catalogue.
 URL = "https://intrafin.eu/catalog/card-games/pokemon?q=H4sIAAAAAAAAA32QzwrCMAzG3yXnITg8yN7Ai3gfo8Q2jkjXjrYTZOzdzf7h3MFTyZcvX35pD9pijA4bggJuwZtOJ8hAe2c4sXcRih7aWT8sr9KYqPbhrdhAUfZgvUarHkxW6r%252FubPV2To%252FxYp%252B2NS0GjlN9uYryQtsJUZnn1VANGbRYS3nMIPqQNjsCWcJIysgOGTMcaM01FLVIT8%252FjEUIZqPGJVMK7pW%252BE2mPKzOLkzTU%252F8LtDp9b2x0qBFmYKauY%252Bn4YPwIXmE2kBAAA%253D"
 BASE = "https://intrafin.eu"
-TIMEOUT = 45
+TIMEOUT = 20
 
 PRICE_RE = re.compile(r"(?:€|EUR)\s*[\d.,]+|[\d.,]+\s*(?:€|EUR)", re.I)
 
@@ -32,8 +33,19 @@ def normalize_status(text):
 def get_products():
     session = requests.Session()
     session.headers.update(HEADERS)
-    response = session.get(URL, timeout=TIMEOUT)
-    response.raise_for_status()
+    response = None
+    last_error = None
+    for attempt in range(2):
+        try:
+            response = session.get(URL, timeout=TIMEOUT)
+            response.raise_for_status()
+            break
+        except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as exc:
+            last_error = exc
+            if attempt == 0:
+                time.sleep(3)
+    if response is None:
+        raise RuntimeError(f"Intrafin kunne ikke hentes efter 2 forsøg: {type(last_error).__name__}")
 
     html = response.text
     lower = html.lower()

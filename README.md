@@ -1,4 +1,4 @@
-# Pokemon Monitor V2.5
+# Pokemon Monitor V2.6
 
 Shops:
 - Proshop
@@ -40,3 +40,10 @@ Intrafin additionally: Sleeves, Album, Dispenser, Binder, Portfolio.
 - Intrafin: intended every 5 minutes with a 45-second HTTP timeout.
 - A failed Intrafin request never overwrites its snapshot.
 - `cron-v2.5.txt` contains the intended cron lines.
+
+## V2.6
+- Adds ToySpace Pokémon.
+- Adds Steffen O Pokémon.
+- Adds The Wobbly Nerdles from both normal Pokémon and Pokémon pre-order pages; duplicate product URLs are merged.
+- Intrafin uses a 20-second timeout, waits 3 seconds, and retries once before giving up.
+- Includes `cron-v2.6.txt` with all fast shops every minute and Intrafin every 5 minutes.
