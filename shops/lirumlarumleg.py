@@ -4,7 +4,7 @@ URL = "https://www.lirumlarumleg.dk/collections/pokemon"
 JSON_URL = URL + "/products.json?limit=250"
 
 def get_products():
-    response = requests.get(JSON_URL, timeout=30, headers={"User-Agent": "Mozilla/5.0"})
+    response = requests.get(JSON_URL, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
     response.raise_for_status()
     data = response.json()
     products = []

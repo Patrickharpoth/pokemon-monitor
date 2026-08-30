@@ -1,49 +1,97 @@
-from playwright.sync_api import sync_playwright
 import re
+import requests
+from bs4 import BeautifulSoup
+from urllib.parse import urljoin
 
-URLS = [
-    "https://intrafin.eu/catalog/card-games/pokemon",
-    "https://intrafin.eu/catalog/card-games/pokemon?page=2",
-]
+URL = "https://intrafin.eu/catalog/card-games/pokemon"
+BASE = "https://intrafin.eu"
+TIMEOUT = 15
 
-PRICE_RE = re.compile(r"€\\s*[\\d.,]+")
+PRICE_RE = re.compile(r"(?:€|EUR)\\s*[\\d.,]+|[\\d.,]+\\s*(?:€|EUR)", re.I)
+
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+                  "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9",
+}
+
+def normalize_status(text):
+    value = (text or "").lower()
+    # Negative states first to avoid substring mistakes.
+    if "out of stock" in value or "not in stock" in value or "sold out" in value:
+        return "Udsolgt"
+    if "backorder" in value or "back order" in value:
+        return "Backorder"
+    if "pre-order" in value or "preorder" in value:
+        return "Pre-order"
+    if "in stock" in value:
+        return "På lager"
+    return None
 
 def get_products():
-    products = {}
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        page = browser.new_page()
-        for url in URLS:
-            page.goto(url, wait_until="domcontentloaded", timeout=60000)
-            page.wait_for_timeout(4000)
+    session = requests.Session()
+    session.headers.update(HEADERS)
 
-            # Intrafin exposes product links in the catalogue; capture link + nearby card text.
-            links = page.locator('a[href*="/product/"], a[href*="/catalog/"]').all()
-            for link in links:
-                try:
-                    text = (link.inner_text() or "").strip()
-                    href = link.get_attribute("href")
-                except Exception:
-                    continue
-                if not text or not href or "€" not in text:
-                    continue
-                if href.startswith("/"):
-                    href = "https://intrafin.eu" + href
-                match = PRICE_RE.search(text)
-                price = match.group(0).strip() if match else None
-                name = PRICE_RE.sub("", text).strip()
-                if not name:
-                    continue
-                # Find stock state in the closest useful parent text.
-                status = None
-                try:
-                    parent_text = link.locator("xpath=..").inner_text().lower()
-                    if "in stock" in parent_text:
-                        status = "På lager"
-                    elif "backorder" in parent_text:
-                        status = "Backorder"
-                except Exception:
-                    pass
-                products[href] = {"name": name, "price": price, "status": status, "product_id": href, "url": href}
-        browser.close()
+    response = session.get(URL, timeout=TIMEOUT)
+    response.raise_for_status()
+
+    # A challenge/login/error page should never become a valid empty snapshot.
+    html = response.text
+    lower = html.lower()
+    if len(html) < 5000 or "cloudflare" in lower and "challenge" in lower:
+        raise RuntimeError("Intrafin returnerede ikke et normalt katalog")
+
+    soup = BeautifulSoup(html, "html.parser")
+    products = {}
+
+    # Use links as anchors and inspect a limited parent card around each link.
+    for a in soup.find_all("a", href=True):
+        href = a.get("href", "")
+        if not href:
+            continue
+        full_url = urljoin(BASE, href)
+
+        # Product links vary by catalogue implementation, so require product-like
+        # text/card evidence instead of assuming one exact URL pattern.
+        anchor_text = " ".join(a.stripped_strings).strip()
+        parent = a
+        card_text = anchor_text
+        for _ in range(4):
+            parent = getattr(parent, "parent", None)
+            if parent is None:
+                break
+            candidate = " ".join(parent.stripped_strings).strip()
+            if 10 <= len(candidate) <= 1500:
+                card_text = candidate
+            if PRICE_RE.search(candidate) and normalize_status(candidate):
+                card_text = candidate
+                break
+
+        status = normalize_status(card_text)
+        price_match = PRICE_RE.search(card_text)
+
+        # A catalogue product should have a meaningful name plus price/status evidence.
+        name = anchor_text
+        if not name or len(name) < 4:
+            continue
+        if not (price_match or status):
+            continue
+
+        # Skip obvious navigation/filter labels.
+        if name.lower() in {"pokemon", "card games", "catalog", "catalogue", "next", "previous"}:
+            continue
+
+        price = price_match.group(0).strip() if price_match else None
+        products[full_url] = {
+            "name": name,
+            "price": price,
+            "status": status,
+            "product_id": full_url,
+            "url": full_url,
+        }
+
+    if not products:
+        raise RuntimeError("Intrafin-siden blev hentet, men ingen produkter kunne udlæses")
+
     return list(products.values())

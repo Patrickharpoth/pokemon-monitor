@@ -6,10 +6,8 @@ def get_products():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         page = browser.new_page()
-        page.goto(URL, wait_until="domcontentloaded", timeout=60000)
-        page.wait_for_timeout(6000)
-
-        # Wix product links on this category page.
+        page.goto(URL, wait_until="domcontentloaded", timeout=45000)
+        page.wait_for_timeout(5000)
         links = page.locator('a[href*="/product-page/"]')
         products = {}
         for i in range(links.count()):
@@ -18,15 +16,12 @@ def get_products():
             href = link.get_attribute("href")
             if not name or not href:
                 continue
-            # Product title text may include "Price€..." on Wix.
             clean_name = name.split("Price€")[0].strip()
             if not clean_name:
                 continue
             if href.startswith("/"):
                 href = "https://www.infinityprints-tcg.com" + href
             products[href] = {"name": clean_name, "price": None, "status": None, "product_id": href, "url": href}
-
-        # Enrich stock/price from the visible page text by matching product names.
         body = page.inner_text("body")
         lines = [x.strip() for x in body.splitlines() if x.strip()]
         for product in products.values():

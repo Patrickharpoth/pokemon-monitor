@@ -4,7 +4,7 @@ import json
 import os
 import requests
 
-from config import is_ignored_product
+from config import is_ignored_product, ALLOW_EMPTY_SHOPS
 from shops.proshop import get_products as get_proshop_products
 from shops.infinityprints import get_products as get_infinityprints_products
 from shops.lirumlarumleg import get_products as get_lirumlarumleg_products
@@ -32,7 +32,9 @@ def send_slack_message(message):
 
 
 def product_key(product):
-    return product.get("product_id") or product.get("url") or product["name"]
+    # Direct product URL is useful when available, but name is safer than
+    # a shared category URL. Shop scrapers should provide a product_id where possible.
+    return product.get("product_id") or product.get("name")
 
 
 def load_snapshot(path):
@@ -60,8 +62,7 @@ def monitor_shop(shop_name, config):
 
     print(f"Produkter fundet: {len(current)}")
 
-    # A shop returning zero products is treated as a scraper/page failure.
-    if not current:
+    if not current and shop_name not in ALLOW_EMPTY_SHOPS:
         print("ADVARSEL: Ingen produkter fundet. Snapshot opdateres ikke.")
         return
 
@@ -126,7 +127,7 @@ def main():
         try:
             monitor_shop(shop_name, config)
         except Exception as exc:
-            print(f"FEJL i {shop_name}: {exc}")
+            print(f"FEJL i {shop_name}: {type(exc).__name__}: {exc}")
 
 
 if __name__ == "__main__":
