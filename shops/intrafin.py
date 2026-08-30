@@ -74,10 +74,15 @@ def get_products():
         if not (price_match or status):
             continue
 
-        if anchor_text.lower() in {
-            "pokemon", "card games", "catalog", "catalogue",
-            "next", "previous", "show more"
-        }:
+        lower_name = anchor_text.lower()
+        if (
+            lower_name in {
+                "pokemon", "card games", "catalog", "catalogue",
+                "next", "previous", "show more"
+            }
+            or lower_name.startswith("filter ")
+            or full_url.lower().startswith("javascript:")
+        ):
             continue
 
         products[full_url] = {

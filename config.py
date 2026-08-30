@@ -12,6 +12,7 @@ SHOP_IGNORE_KEYWORDS = {
         "Dispenser",
         "Binder",
         "Portfolio",
+        "Deck Box",
     ],
 }
 

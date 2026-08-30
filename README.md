@@ -1,4 +1,4 @@
-# Pokemon Monitor V2.4
+# Pokemon Monitor V2.4.1
 
 Shops:
 - Proshop
@@ -29,3 +29,7 @@ Intrafin additionally: Sleeves, Album, Dispenser, Binder, Portfolio.
 - Intrafin uses the user's expanded-catalogue URL so all displayed Pokémon products are monitored.
 - Intrafin ignore matching is applied only to each product's own name.
 - Price/stock context may come from the surrounding product card, but neighbouring text is never used as the product name.
+
+## V2.4.1
+- Intrafin additionally ignores `Deck Box`.
+- Filters obvious UI entries such as `Filter 36 results` / `javascript:void(0)` so they cannot generate alerts.
