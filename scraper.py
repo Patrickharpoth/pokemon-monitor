@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 
 import json
 import os
+import re
 import requests
 
 load_dotenv()
@@ -26,6 +27,32 @@ def send_slack_message(message):
     print("Slack status:", response.status_code, response.text)
 
 
+def normalize_status(status):
+    if not status:
+        return None
+
+    if "På lager" in status:
+        return "På lager"
+    if "Fjernlager" in status:
+        return "Fjernlager"
+    if "Bestilt" in status:
+        return "Bestilt"
+    if "Udsolgt" in status:
+        return "Udsolgt"
+    if "Ikke på lager" in status:
+        return "Ikke på lager"
+
+    return status
+
+
+def is_price(line):
+    return bool(re.match(r"^\d{1,4},\d{2} kr\.$", line))
+
+
+def is_product_id(line):
+    return line.isdigit() and len(line) >= 6
+
+
 def get_products():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
@@ -39,7 +66,7 @@ def get_products():
         )
 
         page.goto(URL, wait_until="domcontentloaded", timeout=60000)
-        page.wait_for_timeout(8000)
+        page.wait_for_timeout(10000)
 
         lines = [
             line.strip()
@@ -50,37 +77,53 @@ def get_products():
         browser.close()
 
     products = []
+    i = 0
 
-    for i, line in enumerate(lines):
-        if line.lower().startswith("pokemon"):
-            price = None
-            status = None
-            product_id = None
+    while i < len(lines):
+        line = lines[i]
 
-            nearby_lines = lines[i:i + 35]
+        if not line.lower().startswith("pokemon"):
+            i += 1
+            continue
 
-            for nearby in nearby_lines:
-                if "kr." in nearby and price is None:
-                    price = nearby
+        name = line
+        price = None
+        status = None
+        product_id = None
 
-                if (
-                    "På lager" in nearby
-                    or "Fjernlager" in nearby
-                    or "Bestilt" in nearby
-                    or "Udsolgt" in nearby
-                    or "Ikke på lager" in nearby
-                ):
-                    status = nearby
+        j = i + 1
 
-                if nearby.isdigit() and len(nearby) >= 6:
-                    product_id = nearby
+        while j < len(lines):
+            current = lines[j]
 
-            products.append({
-                "name": line,
-                "price": price,
-                "status": status,
-                "product_id": product_id,
-            })
+            if current.lower().startswith("pokemon"):
+                break
+
+            if is_price(current) and price is None:
+                price = current
+
+            if (
+                "På lager" in current
+                or "Fjernlager" in current
+                or "Bestilt" in current
+                or "Udsolgt" in current
+                or "Ikke på lager" in current
+            ):
+                status = normalize_status(current)
+
+            if is_product_id(current):
+                product_id = current
+
+            j += 1
+
+        products.append({
+            "name": name,
+            "price": price,
+            "status": status,
+            "product_id": product_id,
+        })
+
+        i = j
 
     return products
 
@@ -99,10 +142,7 @@ def save_products(products):
 
 
 def product_key(product):
-    if product.get("product_id"):
-        return product["product_id"]
-
-    return product["name"]
+    return product.get("product_id") or product.get("name")
 
 
 def main():
@@ -178,6 +218,7 @@ def main():
         print("Ingen produktændringer")
 
     save_products(current_products)
+
 
 if __name__ == "__main__":
     main()
