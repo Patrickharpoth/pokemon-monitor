@@ -1,0 +1,5 @@
+# Fast shops: every minute
+* * * * * cd /root/pokemon-monitor && /root/pokemon-monitor/venv/bin/python monitor.py --shop "Proshop" --shop "Infinity Prints TCG" --shop "Lirum Larum Leg" >> /root/pokemon-monitor/cron.log 2>&1
+
+# Intrafin: every 5 minutes
+*/5 * * * * cd /root/pokemon-monitor && /root/pokemon-monitor/venv/bin/python monitor.py --shop "Intrafin" >> /root/pokemon-monitor/cron.log 2>&1

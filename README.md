@@ -1,4 +1,4 @@
-# Pokemon Monitor V2.4.1
+# Pokemon Monitor V2.5
 
 Shops:
 - Proshop
@@ -33,3 +33,10 @@ Intrafin additionally: Sleeves, Album, Dispenser, Binder, Portfolio.
 ## V2.4.1
 - Intrafin additionally ignores `Deck Box`.
 - Filters obvious UI entries such as `Filter 36 results` / `javascript:void(0)` so they cannot generate alerts.
+
+## V2.5
+- Supports `--shop` so different shops can run at different frequencies.
+- Proshop, Infinity Prints TCG and Lirum Larum Leg: intended every minute.
+- Intrafin: intended every 5 minutes with a 45-second HTTP timeout.
+- A failed Intrafin request never overwrites its snapshot.
+- `cron-v2.5.txt` contains the intended cron lines.

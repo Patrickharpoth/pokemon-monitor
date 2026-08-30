@@ -1,4 +1,5 @@
 from pathlib import Path
+import argparse
 from dotenv import load_dotenv
 import json
 import os
@@ -123,7 +124,27 @@ def monitor_shop(shop_name, config):
 
 
 def main():
-    for shop_name, config in SHOPS.items():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--shop",
+        action="append",
+        help="Kør kun en bestemt shop. Kan angives flere gange.",
+    )
+    args = parser.parse_args()
+
+    selected = SHOPS
+    if args.shop:
+        requested = {name.lower() for name in args.shop}
+        selected = {
+            name: config
+            for name, config in SHOPS.items()
+            if name.lower() in requested
+        }
+        unknown = requested - {name.lower() for name in selected}
+        if unknown:
+            raise SystemExit("Ukendt shop: " + ", ".join(sorted(unknown)))
+
+    for shop_name, config in selected.items():
         try:
             monitor_shop(shop_name, config)
         except Exception as exc:
