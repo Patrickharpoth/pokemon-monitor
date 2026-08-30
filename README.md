@@ -47,3 +47,8 @@ Intrafin additionally: Sleeves, Album, Dispenser, Binder, Portfolio.
 - Adds The Wobbly Nerdles from both normal Pokémon and Pokémon pre-order pages; duplicate product URLs are merged.
 - Intrafin uses a 20-second timeout, waits 3 seconds, and retries once before giving up.
 - Includes `cron-v2.6.txt` with all fast shops every minute and Intrafin every 5 minutes.
+
+## V2.6.1
+- ToySpace parser fixed to read every product card in the filtered Pokémon category instead of requiring the word Pokémon in every title.
+- Steffen O now retries once after 3 seconds with a 15-second timeout.
+- Recommended cron moves Steffen O to the 5-minute group because its server can be slow.
