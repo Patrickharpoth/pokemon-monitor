@@ -1,11 +1,26 @@
-# Pokemon Monitor V2
+# Pokemon Monitor V2.1
 
 Multi-shop Pokémon product monitor.
 
-## Structure
-- `monitor.py` – common monitoring, comparison and Slack alerts
-- `shops/proshop.py` – Proshop scraper
-- `shops/` – add future shops here
-- `snapshots/` – runtime state; intentionally ignored by Git
+## Alert logic
+The monitor alerts only when:
+1. A new relevant product appears.
+2. An existing relevant product transitions to `På lager`.
 
-The existing production scraper should remain active until V2 has been tested on the VPS.
+Price changes, removals, and out-of-stock transitions do not trigger alerts.
+
+## Ignore list
+Edit `config.py` to add product-name keywords that should never trigger alerts.
+
+Current ignore keywords:
+- Zygarde
+- Battle Deck
+- Portfolio
+- Championship Deck
+
+## Structure
+- `monitor.py` – shared monitoring, snapshots and Slack alerts
+- `config.py` – ignore rules
+- `shops/proshop.py` – Proshop scraper
+- `shops/` – future shop scrapers
+- `snapshots/` – runtime state, ignored by Git

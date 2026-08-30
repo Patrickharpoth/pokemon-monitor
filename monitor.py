@@ -4,6 +4,7 @@ import json
 import os
 import requests
 
+from config import is_ignored_product
 from shops.proshop import get_products as get_proshop_products
 
 load_dotenv()
@@ -44,6 +45,10 @@ def save_snapshot(path, products):
         json.dump(products, f, indent=2, ensure_ascii=False)
 
 
+def is_in_stock(product):
+    return product.get("status") == "På lager"
+
+
 def monitor_shop(shop_name, config):
     print(f"\n--- {shop_name} ---")
     current = config["scraper"]()
@@ -52,10 +57,12 @@ def monitor_shop(shop_name, config):
 
     print(f"Produkter fundet: {len(current)}")
 
-    # Safety: never overwrite a good snapshot if parsing fails.
     if not current:
         print("ADVARSEL: Ingen produkter fundet. Snapshot opdateres ikke.")
         return
+
+    ignored_count = sum(is_ignored_product(p.get("name")) for p in current)
+    print(f"Ignorerede produkter: {ignored_count}")
 
     if old is None:
         save_snapshot(snapshot_path, current)
@@ -65,46 +72,54 @@ def monitor_shop(shop_name, config):
     old_map = {product_key(p): p for p in old}
     current_map = {product_key(p): p for p in current}
 
-    new_keys = set(current_map) - set(old_map)
-    removed_keys = set(old_map) - set(current_map)
-    changed = []
+    new_products = []
+    back_in_stock = []
 
-    for key in set(old_map) & set(current_map):
+    for key, product in current_map.items():
+        if is_ignored_product(product.get("name")):
+            continue
+
+        if key not in old_map:
+            new_products.append(product)
+            continue
+
         before = old_map[key]
-        now = current_map[key]
-        if before.get("price") != now.get("price") or before.get("status") != now.get("status"):
-            changed.append((before, now))
 
-    if not (new_keys or removed_keys or changed):
-        print("Ingen produktændringer")
+        # Only alert when a relevant product transitions from not-in-stock
+        # (or unknown) to explicitly "På lager".
+        if not is_in_stock(before) and is_in_stock(product):
+            back_in_stock.append((before, product))
+
+    if not new_products and not back_in_stock:
+        print("Ingen relevante ændringer")
         save_snapshot(snapshot_path, current)
         return
 
     lines = [
-        f"🚨 {shop_name} Pokémon ændring fundet",
-        f"Nye produkter: {len(new_keys)}",
-        f"Fjernede produkter: {len(removed_keys)}",
-        f"Pris/lager ændret: {len(changed)}",
+        f"🚨 {shop_name} Pokémon alert",
         "",
     ]
 
-    for key in sorted(new_keys):
-        p = current_map[key]
-        lines.append(f"🆕 {p['name']} | {p.get('price')} | {p.get('status')}\n{p.get('url', '')}")
-
-    for key in sorted(removed_keys):
-        p = old_map[key]
-        lines.append(f"❌ {p['name']} | {p.get('price')} | {p.get('status')}")
-
-    for before, now in changed:
+    for p in new_products:
         lines.append(
-            f"🔄 {now['name']}\n"
-            f"Før: {before.get('price')} | {before.get('status')}\n"
-            f"Nu: {now.get('price')} | {now.get('status')}\n"
+            f"🆕 NYT PRODUKT\n"
+            f"{p['name']}\n"
+            f"Lager: {p.get('status') or 'Ukendt'}\n"
+            f"Pris: {p.get('price') or 'Ikke fundet'}\n"
+            f"{p.get('url', '')}"
+        )
+
+    for before, now in back_in_stock:
+        lines.append(
+            f"🟢 PÅ LAGER\n"
+            f"{now['name']}\n"
+            f"Før: {before.get('status') or 'Ukendt'}\n"
+            f"Nu: På lager\n"
+            f"Pris: {now.get('price') or 'Ikke fundet'}\n"
             f"{now.get('url', '')}"
         )
 
-    message = "\n".join(lines)
+    message = "\n\n".join(lines)
     print(message)
     send_slack_message(message)
     save_snapshot(snapshot_path, current)
