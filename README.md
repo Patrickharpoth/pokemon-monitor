@@ -52,3 +52,9 @@ Intrafin additionally: Sleeves, Album, Dispenser, Binder, Portfolio.
 - ToySpace parser fixed to read every product card in the filtered Pokémon category instead of requiring the word Pokémon in every title.
 - Steffen O now retries once after 3 seconds with a 15-second timeout.
 - Recommended cron moves Steffen O to the 5-minute group because its server can be slow.
+
+## V2.6.2
+- ToySpace: HTTP with retry, then Playwright fallback; parses Magento product cards.
+- Steffen O: parses the shop's stable visible-text structure instead of relying on generic product-card HTML.
+- Steffen O also has HTTP retry and Playwright fallback.
+- ToySpace's existing v2.6 snapshot should be deleted once before testing because v2.6 only captured 3 of 13 products.
