@@ -6,6 +6,9 @@ import requests
 
 from config import is_ignored_product
 from shops.proshop import get_products as get_proshop_products
+from shops.infinityprints import get_products as get_infinityprints_products
+from shops.lirumlarumleg import get_products as get_lirumlarumleg_products
+from shops.intrafin import get_products as get_intrafin_products
 
 load_dotenv()
 
@@ -13,10 +16,10 @@ SLACK_WEBHOOK_URL = os.getenv("SLACK_WEBHOOK_URL")
 SNAPSHOT_DIR = Path("snapshots")
 
 SHOPS = {
-    "Proshop": {
-        "scraper": get_proshop_products,
-        "snapshot": SNAPSHOT_DIR / "proshop.json",
-    },
+    "Proshop": {"scraper": get_proshop_products, "snapshot": SNAPSHOT_DIR / "proshop.json"},
+    "Infinity Prints TCG": {"scraper": get_infinityprints_products, "snapshot": SNAPSHOT_DIR / "infinityprints.json"},
+    "Lirum Larum Leg": {"scraper": get_lirumlarumleg_products, "snapshot": SNAPSHOT_DIR / "lirumlarumleg.json"},
+    "Intrafin": {"scraper": get_intrafin_products, "snapshot": SNAPSHOT_DIR / "intrafin.json"},
 }
 
 
@@ -57,11 +60,12 @@ def monitor_shop(shop_name, config):
 
     print(f"Produkter fundet: {len(current)}")
 
+    # A shop returning zero products is treated as a scraper/page failure.
     if not current:
         print("ADVARSEL: Ingen produkter fundet. Snapshot opdateres ikke.")
         return
 
-    ignored_count = sum(is_ignored_product(p.get("name")) for p in current)
+    ignored_count = sum(is_ignored_product(p.get("name"), shop_name) for p in current)
     print(f"Ignorerede produkter: {ignored_count}")
 
     if old is None:
@@ -76,7 +80,7 @@ def monitor_shop(shop_name, config):
     back_in_stock = []
 
     for key, product in current_map.items():
-        if is_ignored_product(product.get("name")):
+        if is_ignored_product(product.get("name"), shop_name):
             continue
 
         if key not in old_map:
@@ -84,9 +88,6 @@ def monitor_shop(shop_name, config):
             continue
 
         before = old_map[key]
-
-        # Only alert when a relevant product transitions from not-in-stock
-        # (or unknown) to explicitly "På lager".
         if not is_in_stock(before) and is_in_stock(product):
             back_in_stock.append((before, product))
 
@@ -95,15 +96,11 @@ def monitor_shop(shop_name, config):
         save_snapshot(snapshot_path, current)
         return
 
-    lines = [
-        f"🚨 {shop_name} Pokémon alert",
-        "",
-    ]
+    lines = [f"🚨 {shop_name} Pokémon alert", ""]
 
     for p in new_products:
         lines.append(
-            f"🆕 NYT PRODUKT\n"
-            f"{p['name']}\n"
+            f"🆕 NYT PRODUKT\n{p['name']}\n"
             f"Lager: {p.get('status') or 'Ukendt'}\n"
             f"Pris: {p.get('price') or 'Ikke fundet'}\n"
             f"{p.get('url', '')}"
@@ -111,8 +108,7 @@ def monitor_shop(shop_name, config):
 
     for before, now in back_in_stock:
         lines.append(
-            f"🟢 PÅ LAGER\n"
-            f"{now['name']}\n"
+            f"🟢 PÅ LAGER\n{now['name']}\n"
             f"Før: {before.get('status') or 'Ukendt'}\n"
             f"Nu: På lager\n"
             f"Pris: {now.get('price') or 'Ikke fundet'}\n"

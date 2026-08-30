@@ -1,26 +1,15 @@
-# Pokemon Monitor V2.1
+# Pokemon Monitor V2.2
 
-Multi-shop Pokémon product monitor.
+Monitors:
+- Proshop
+- Infinity Prints TCG
+- Lirum Larum Leg
+- Intrafin
 
-## Alert logic
-The monitor alerts only when:
-1. A new relevant product appears.
-2. An existing relevant product transitions to `På lager`.
+Alerts only for new relevant products and transitions to `På lager`.
+Price changes, removals, and out-of-stock transitions are ignored.
 
-Price changes, removals, and out-of-stock transitions do not trigger alerts.
+Global ignore keywords: Zygarde, Battle Deck, Portfolio, Championship Deck.
+Intrafin additionally ignores: Sleeves, Album, Dispenser, Binder, Portfolio.
 
-## Ignore list
-Edit `config.py` to add product-name keywords that should never trigger alerts.
-
-Current ignore keywords:
-- Zygarde
-- Battle Deck
-- Portfolio
-- Championship Deck
-
-## Structure
-- `monitor.py` – shared monitoring, snapshots and Slack alerts
-- `config.py` – ignore rules
-- `shops/proshop.py` – Proshop scraper
-- `shops/` – future shop scrapers
-- `snapshots/` – runtime state, ignored by Git
+Each shop has its own snapshot and a failure in one shop does not stop the others.
