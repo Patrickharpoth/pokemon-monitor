@@ -4,3 +4,4 @@ __pycache__/snapshot.json
 cron.log
 scraper_backup.py
 .env*
+snapshot.json
