@@ -58,3 +58,9 @@ Intrafin additionally: Sleeves, Album, Dispenser, Binder, Portfolio.
 - Steffen O: parses the shop's stable visible-text structure instead of relying on generic product-card HTML.
 - Steffen O also has HTTP retry and Playwright fallback.
 - ToySpace's existing v2.6 snapshot should be deleted once before testing because v2.6 only captured 3 of 13 products.
+
+## V2.6.3
+- Steffen O no longer uses Playwright. The page is server-rendered, so the scraper now uses requests first and curl as a transport fallback.
+- Product extraction is based on the shop's Pokemon title links and nearby stock/price text.
+- ToySpace moved to the 5-minute group because its HTTP server can time out and trigger a browser fallback.
+- Fast group remains Proshop, Infinity Prints TCG, Lirum Larum Leg, and The Wobbly Nerdles.

@@ -1,0 +1,5 @@
+# Fast/stable shops: every minute
+* * * * * cd /root/pokemon-monitor && /root/pokemon-monitor/venv/bin/python monitor.py --shop "Proshop" --shop "Infinity Prints TCG" --shop "Lirum Larum Leg" --shop "The Wobbly Nerdles" >> /root/pokemon-monitor/cron.log 2>&1
+
+# Slower / less stable shops: every 5 minutes
+*/5 * * * * cd /root/pokemon-monitor && /root/pokemon-monitor/venv/bin/python monitor.py --shop "Intrafin" --shop "ToySpace" --shop "Steffen O" >> /root/pokemon-monitor/cron.log 2>&1
