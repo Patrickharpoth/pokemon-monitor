@@ -3,11 +3,12 @@ import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
-URL = "https://intrafin.eu/catalog/card-games/pokemon"
+# Intrafin URL configured to show the expanded Pokémon catalogue.
+URL = "https://intrafin.eu/catalog/card-games/pokemon?q=H4sIAAAAAAAAA32QzwrCMAzG3yXnITg8yN7Ai3gfo8Q2jkjXjrYTZOzdzf7h3MFTyZcvX35pD9pijA4bggJuwZtOJ8hAe2c4sXcRih7aWT8sr9KYqPbhrdhAUfZgvUarHkxW6r%252FubPV2To%252FxYp%252B2NS0GjlN9uYryQtsJUZnn1VANGbRYS3nMIPqQNjsCWcJIysgOGTMcaM01FLVIT8%252FjEUIZqPGJVMK7pW%252BE2mPKzOLkzTU%252F8LtDp9b2x0qBFmYKauY%252Bn4YPwIXmE2kBAAA%253D"
 BASE = "https://intrafin.eu"
 TIMEOUT = 15
 
-PRICE_RE = re.compile(r"(?:€|EUR)\\s*[\\d.,]+|[\\d.,]+\\s*(?:€|EUR)", re.I)
+PRICE_RE = re.compile(r"(?:€|EUR)\s*[\d.,]+|[\d.,]+\s*(?:€|EUR)", re.I)
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
@@ -18,7 +19,6 @@ HEADERS = {
 
 def normalize_status(text):
     value = (text or "").lower()
-    # Negative states first to avoid substring mistakes.
     if "out of stock" in value or "not in stock" in value or "sold out" in value:
         return "Udsolgt"
     if "backorder" in value or "back order" in value:
@@ -32,31 +32,32 @@ def normalize_status(text):
 def get_products():
     session = requests.Session()
     session.headers.update(HEADERS)
-
     response = session.get(URL, timeout=TIMEOUT)
     response.raise_for_status()
 
-    # A challenge/login/error page should never become a valid empty snapshot.
     html = response.text
     lower = html.lower()
-    if len(html) < 5000 or "cloudflare" in lower and "challenge" in lower:
+    if len(html) < 5000 or ("cloudflare" in lower and "challenge" in lower):
         raise RuntimeError("Intrafin returnerede ikke et normalt katalog")
 
     soup = BeautifulSoup(html, "html.parser")
     products = {}
 
-    # Use links as anchors and inspect a limited parent card around each link.
     for a in soup.find_all("a", href=True):
         href = a.get("href", "")
         if not href:
             continue
         full_url = urljoin(BASE, href)
-
-        # Product links vary by catalogue implementation, so require product-like
-        # text/card evidence instead of assuming one exact URL pattern.
         anchor_text = " ".join(a.stripped_strings).strip()
-        parent = a
+
+        # Keep the product name strictly to the anchor text. Parent/card text is
+        # used only for stock and price so neighbouring accessory keywords cannot
+        # accidentally make a sealed product ignored.
+        if not anchor_text or len(anchor_text) < 4:
+            continue
+
         card_text = anchor_text
+        parent = a
         for _ in range(4):
             parent = getattr(parent, "parent", None)
             if parent is None:
@@ -70,22 +71,18 @@ def get_products():
 
         status = normalize_status(card_text)
         price_match = PRICE_RE.search(card_text)
-
-        # A catalogue product should have a meaningful name plus price/status evidence.
-        name = anchor_text
-        if not name or len(name) < 4:
-            continue
         if not (price_match or status):
             continue
 
-        # Skip obvious navigation/filter labels.
-        if name.lower() in {"pokemon", "card games", "catalog", "catalogue", "next", "previous"}:
+        if anchor_text.lower() in {
+            "pokemon", "card games", "catalog", "catalogue",
+            "next", "previous", "show more"
+        }:
             continue
 
-        price = price_match.group(0).strip() if price_match else None
         products[full_url] = {
-            "name": name,
-            "price": price,
+            "name": anchor_text,
+            "price": price_match.group(0).strip() if price_match else None,
             "status": status,
             "product_id": full_url,
             "url": full_url,

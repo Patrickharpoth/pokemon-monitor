@@ -1,4 +1,4 @@
-# Pokemon Monitor V2.3
+# Pokemon Monitor V2.4
 
 Shops:
 - Proshop
@@ -24,3 +24,8 @@ Intrafin additionally: Sleeves, Album, Dispenser, Binder, Portfolio.
 - Product keys no longer fall back to a shared category URL.
 - Includes a logrotate configuration for cron.log (5 MB, 3 compressed rotations).
 - A shop failure does not overwrite its previous snapshot.
+
+## V2.4
+- Intrafin uses the user's expanded-catalogue URL so all displayed Pokémon products are monitored.
+- Intrafin ignore matching is applied only to each product's own name.
+- Price/stock context may come from the surrounding product card, but neighbouring text is never used as the product name.
