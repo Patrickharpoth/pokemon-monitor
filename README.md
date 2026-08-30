@@ -69,3 +69,8 @@ Intrafin additionally: Sleeves, Album, Dispenser, Binder, Portfolio.
 - The Wobbly Nerdles is enabled in the every-minute group.
 - ToySpace is enabled in the every-5-minute group because its server can occasionally be slow.
 - Steffen O remains in the codebase for future work but is not scheduled in cron.
+
+## V2.6.5
+- ToySpace no longer falls back to Playwright, which could hang for 60 seconds in cron.
+- ToySpace now uses requests first and IPv4 curl as fallback.
+- Existing ToySpace snapshot is kept; failed fetches still do not overwrite it.
