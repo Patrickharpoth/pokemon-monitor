@@ -64,3 +64,8 @@ Intrafin additionally: Sleeves, Album, Dispenser, Binder, Portfolio.
 - Product extraction is based on the shop's Pokemon title links and nearby stock/price text.
 - ToySpace moved to the 5-minute group because its HTTP server can time out and trigger a browser fallback.
 - Fast group remains Proshop, Infinity Prints TCG, Lirum Larum Leg, and The Wobbly Nerdles.
+
+## V2.6.4 final
+- The Wobbly Nerdles is enabled in the every-minute group.
+- ToySpace is enabled in the every-5-minute group because its server can occasionally be slow.
+- Steffen O remains in the codebase for future work but is not scheduled in cron.
