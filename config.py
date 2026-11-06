@@ -1,8 +1,7 @@
 GLOBAL_IGNORE_KEYWORDS = [
     "Zygarde",
-    "Battle Deck",
     "Portfolio",
-    "Championship Deck",
+    "Deck",
 ]
 
 SHOP_IGNORE_KEYWORDS = {
