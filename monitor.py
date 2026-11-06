@@ -8,9 +8,7 @@ import requests
 from config import is_ignored_product, ALLOW_EMPTY_SHOPS
 from shops.proshop import get_products as get_proshop_products
 from shops.infinityprints import get_products as get_infinityprints_products
-from shops.lirumlarumleg import get_products as get_lirumlarumleg_products
 from shops.intrafin import get_products as get_intrafin_products
-from shops.toyspace import get_products as get_toyspace_products
 from shops.steffeno import get_products as get_steffeno_products
 from shops.wobbly import get_products as get_wobbly_products
 
@@ -19,15 +17,30 @@ load_dotenv()
 SLACK_WEBHOOK_URL = os.getenv("SLACK_WEBHOOK_URL")
 SNAPSHOT_DIR = Path("snapshots")
 
+
 SHOPS = {
-    "Proshop": {"scraper": get_proshop_products, "snapshot": SNAPSHOT_DIR / "proshop.json"},
-    "Infinity Prints TCG": {"scraper": get_infinityprints_products, "snapshot": SNAPSHOT_DIR / "infinityprints.json"},
-    "Lirum Larum Leg": {"scraper": get_lirumlarumleg_products, "snapshot": SNAPSHOT_DIR / "lirumlarumleg.json"},
-    "Intrafin": {"scraper": get_intrafin_products, "snapshot": SNAPSHOT_DIR / "intrafin.json"},
-    "ToySpace": {"scraper": get_toyspace_products, "snapshot": SNAPSHOT_DIR / "toyspace.json"},
-    "Steffen O": {"scraper": get_steffeno_products, "snapshot": SNAPSHOT_DIR / "steffeno.json"},
-    "The Wobbly Nerdles": {"scraper": get_wobbly_products, "snapshot": SNAPSHOT_DIR / "wobbly.json"},
+    "Proshop": {
+        "scraper": get_proshop_products,
+        "snapshot": SNAPSHOT_DIR / "proshop.json"
+    },
+    "Infinity Prints TCG": {
+        "scraper": get_infinityprints_products,
+        "snapshot": SNAPSHOT_DIR / "infinityprints.json"
+    },
+    "Intrafin": {
+        "scraper": get_intrafin_products,
+        "snapshot": SNAPSHOT_DIR / "intrafin.json"
+    },
+    "Steffen O": {
+        "scraper": get_steffeno_products,
+        "snapshot": SNAPSHOT_DIR / "steffeno.json"
+    },
+    "The Wobbly Nerdles": {
+        "scraper": get_wobbly_products,
+        "snapshot": SNAPSHOT_DIR / "wobbly.json"
+    },
 }
+
 
 
 def send_slack_message(message):
